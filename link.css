@@ -1,0 +1,35 @@
+  html {
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+      font-family: Arial, sans-serif;      
+
+    }
+
+    /* Styling the link */
+    .image-link {
+      display: inline-block;
+      overflow: hidden;
+      border-radius: 12px; /* Optional rounded corners */
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    /* Styling the image */
+    .image-link img {
+      display: block;
+      width: 40px; /* Adjust the width of the image */
+      height: auto;
+      transition: transform 0.3s ease; /* Smooth scaling effect */
+      padding: 15px;
+
+    }
+
+    /* Hover effect */
+    .image-link:hover {
+      transform: scale(1.1); /* Scale the entire link */
+    }
+
+    .image-link:active {
+      transform: scale(1.2); /* Slightly reduce scale on click */
+    }
+

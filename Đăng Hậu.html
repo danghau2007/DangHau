@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style1.css">
+    <link rel="stylesheet" href="link.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Đăng Hậu</title>
+    <style>
+        /* Đặt margin cho body bằng 0 để tránh phần trắng */
+        body {
+            margin: 0;
+       /* Thanh liên kết nổi với video nền */
+        .navbar {
+            position: relative; /* Cần position: relative để video nằm dưới các phần tử khác */
+            color: white;
+            padding: 100px 0; /* Ban đầu padding lớn */
+            text-align: center;
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: padding 0.5s ease, background-color 0.3s ease; /* Thêm hiệu ứng chuyển đổi */
+        }
+
+        /* Video nền */
+        .navbar video {
+            position: absolute; /* Đặt video dưới các phần tử khác */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Làm cho video phủ đầy không gian */
+            z-index: -1; /* Đảm bảo video nằm dưới các phần tử khác trong thanh */
+            box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.75); /* Đổ bóng */
+            transition: box-shadow 0.3s ease; /* Hiệu ứng chuyển đổi */
+        }
+
+        /* Khi thanh điều hướng thu nhỏ */
+        .navbar.small {
+            padding: 100px 0; /* Thu nhỏ padding khi cuộn xuống */
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin: 0 5px;
+            font-size: 18px;
+        }
+
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+        .navbar.small .hidden {
+            display: none; /* Ẩn dòng chữ khi cuộn xuống */
+        }
+        .hidden {
+            top: 20%;            /* Canh giữa theo chiều dọc */
+            left: 20%;           /* Canh giữa theo chiều ngang */
+            transform: translate(0%, 50%);
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 18px;
+        }
+
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+
+        /* Phần nội dung để bạn có thể cuộn trang */
+
+        }
+        {
+            margin: 0;
+            height: 100vh; /* Chiều cao của body bằng chiều cao cửa sổ trình duyệt */
+            position: relative; /* Đặt vị trí của body để tính toán với các phần tử con */
+        }
+            p {text-align: center;
+            }
+            {height: 100%;   /* Đảm bảo chiều cao của body và html là 100% */
+            margin: 0;      /* Loại bỏ margin mặc định */
+        }
+        div {text-align: center;}
+        {
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+            height: 2000px;}
+        {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            flex-direction: column;
+            overflow-y: auto; 
+        }
+            .box-container {
+            width: 1000px;
+            height: 100px;
+            background:#DAF0F7;
+            border-radius: 100px;
+            overflow: hidden;
+            transition: all 0.5s ease;
+            cursor: pointer;
+            margin: 20px 0;
+            position: absolute; /* Đặt vị trí khung theo cách tuyệt đối */
+            top: 20%;            /* Canh giữa theo chiều dọc */
+            left: 19%;           /* Canh giữa theo chiều ngang */
+            transform: translate(0%, 0%); /* Dịch chuyển để canh chính xác */
+            border: 0px solid #333; /* Đường viền khung */
+            text-align: center;    /* Căn giữa nội dung trong khung */
+        }
+        .box-container {
+            position: relative;
+            width: 1000px;
+            height: 100px;
+            background: #000000
+            border-radius: 100px;
+            overflow: hidden;
+            transition: all 0.5s ease;
+            cursor: pointer;
+        }
+        .box-container:hover .box-content {
+            transform: translateY(0);
+        }
+
+        .box-container:hover {
+            transform: scale(1.1);
+            }
+            .box-content {
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translatex(-50%) translateY(100%);
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 100px;
+            font-size: 1.2rem;
+            transition: transform 0.3s ease, top 0.3s ease;
+            width: 550px;
+            height: 30px;
+        }
+        .box-inner {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: white;
+            border-radius: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #333;
+            font-size: 1.5rem;
+            font-weight: bold;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .box-container:hover .box-inner {
+            opacity: 1;}
+        .content {
+        padding: 20px;
+        height: 2000px; /* Đặt chiều cao để có thể cuộn trang */
+        }
+                {
+            margin: 0;
+        }
+
+        .abc {
+            position: fixed;
+            top: 13%;
+            left: 46%;
+            transform: translate(0%, 0%);
+            width: auto;
+            height: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #f0f0f0;
+            z-index: 10;
+            pointer-events: none;
+            text-align: center;
+        }
+
+        .scroll-image {
+            width: 140px;
+            height: 140px;
+            transition: transform 0.3s ease, left 0.3s ease;
+            pointer-events: auto;
+            position: relative;
+
+        }
+        /* @keyframes tạo hiệu ứng chữ xuất hiện */
+        @keyframes hienThi {
+            0% {
+                opacity: 0; /* Ban đầu chữ vô hình */
+                transform: translateY(40px); /* Chữ bắt đầu từ vị trí thấp */
+            }
+            100% {
+                opacity: 1; /* Chữ hoàn toàn hiện ra */
+                transform: translateY(0); /* Chữ di chuyển về vị trí ban đầu */}
+    </style>
+    <!-- Thanh liên kết nổi -->
+    <div class="navbar" id="navbar">
+        <video autoplay muted loop>
+            <source src="E:\girlonthehill-lowres.mp4" type="video/mp4">
+        </video>
+        <style>
+                .xuathien {
+            font-size: 50px;
+            color: #ffffff;
+            opacity: 0; /* Ban đầu chữ sẽ vô hình */
+            animation: hienThi 5s forwards; /* Hiệu ứng xuất hiện trong 3 giây */
+            position: absolute; /* Đặt vị trí khung theo cách tuyệt đối */
+            top: 30%;            /* Canh giữa theo chiều dọc */
+            left: 32%;           /* Canh giữa theo chiều ngang */
+            transform: translate(0%, 0%); /* Dịch chuyển để canh chính xác */
+            border: 0px solid #333; /* Đường viền khung */
+            text-align: center;    /* Căn giữa nội dung trong khung */
+        }
+            </style>       
+    <div class="abc">
+        <img id="image" src="E:/Picture1-removebg-preview.png" alt="Image" class="scroll-image">
+    </div>
+
+        <span class="xuathien";  style="font-size: 50px;font-family: SVN-Nexa Light;"> I'm Nguyen Do Dang Hau.</span>
+        <p class="hidden"; style="font-size: 100px;font-family: SVN-Marujo;"> Welcome!</p>
+    </div>
+
+    <!-- Nội dung trang -->
+    <div class="box-container">
+        <div class="box-content"; style="font-size: 20px;font-family: SVN-Bango;">Chào mừng bạn đã đến với trang web của mình!</div>
+        <div class="box-inner"style="font-size: 30px;font-family: SVN-Product Sans;">Mình là Nguyễn Đỗ Đăng Hậu, học sinh lớp 12A02, trường Trung học Phổ Thông số 1 Tư Nghĩa, tỉnh Quảng Ngãi.</div>
+    </div>
+    <div class="background">
+        <img src="" id="bg-img">
+    </div>
+    <style>
+        li {font-family: UTM Avo}
+            .rounded {
+            width: 700px; /* Chiều rộng khung */
+            height: 950px; /* Chiều cao khung */
+            border: 2px; /* Đường viền */
+            border-radius: 30px; /* Bo góc 20px */
+            background-color: #e7e7e7; /* Màu nền */
+            box-shadow: 0 0px 0px rgba(0, 0, 0, 0.3); /* Đổ bóng */
+            display: flex;
+            font-size: 1.2rem;
+            color: #333;
+            margin: 50px auto; /* Căn giữa khung */
+            text-align: left;
+            padding: 30px;
+            position: absolute;
+            transform: translate(50px,50px);
+        }
+        .rounded:hover {
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5); /* Đổ bóng */;}
+    </style>
+    <style src="style.css">
+        {
+            position: absolute; /* Đặt vị trí khung theo cách tuyệt đối */
+            top: 30%;            /* Canh giữa theo chiều dọc */
+            left: 32%;           /* Canh giữa theo chiều ngang */
+            transform: translate(0%, 0%); /* Dịch chuyển để canh chính xác */
+        }
+    </style>
+    <div class="container">
+        <div class="player-img">
+            <img src="" class="active" id="cover">
+        </div>
+        <h2 id="music-title" style="font-family: UTM Avo;"></h2>
+        <h3 id="music-artist"></h3>
+
+        <div class="player-progress" id="player-progress" >
+            <div class="progress" id="progress"></div>
+            <div class="music-duration">
+                <a id="current-time">0:00</a>
+                <a id="duration">0:00</a>
+            </div>
+        </div>
+        <div class="player-controls">
+            <i class="fa-solid fa-backward" title="Previous" id="prev"></i>
+            <i class="fa-solid fa-play play-button" title="Play" id="play"></i>
+            <i class="fa-solid fa-forward" title="Next" id="next"></i>
+        </div>
+    </div>
+
+    <script src="index.js"></script>
+    <div class="content">
+    <h2> 
+        <span> I </span>
+        <span> N </span>
+        <span> F</span>
+        <span> O </span>
+        <span> R </span>
+        <span> M</span>
+        <span> A </span>
+        <span> T </span>
+        <span> I </span>
+        <span> O </span>
+        <span> N </span>
+    </h2>
+    <style>
+        {
+            background: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        span {
+            position: relative;
+            font-family: "Poppins Black";
+            top: 20px;
+            color: white;
+            display: inline-block;
+            font-size: 5rem;
+            text-shadow: 0 1px 0 #DAF0F7, 0 2px 0 #DAF0F7, 0 3px 0 #DAF0F7, 6px 0 transparent, 0 7px 0 transparent 0 8px 0 transparent, 0 9px 0 transparent, 0 10px 10px rgba(0, 0, 0.5);
+            animation: bounce 0.4s ease infinite alternate;
+        }
+        h2 span:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+         h2 span:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+         h2 span:nth-child(4) {
+            animation-delay: 0.3s;
+        }
+         h2 span:nth-child(5) {
+            animation-delay: 0.4s;
+        }
+         h2 span:nth-child(6) {
+            animation-delay: 0.5s;
+        }
+        h2 span:nth-child(7) {
+            animation-delay: 0.6s;
+        }
+        h2 span:nth-child(8) {
+            animation-delay: 0.7s;
+        }
+         h2 span:nth-child(9) {
+            animation-delay: 0.8s;
+        }
+        h2 span:nth-child(10) {
+            animation-delay: 0.9s;
+        }
+         h2 span:nth-child(11) {
+            animation-delay: 1s;
+        }
+        h2 span:nth-child(12) {
+            animation-delay: 1.1s;
+        }
+        @keyframes bounce {
+            100%{
+                top:-20px;
+                text-shadow: 0 1px 0 #C9E9D2, 0 2px 0 #C9E9D2, 0 3px 0 #C9E9D2, 0 4px 0 #C9E9D2, 0 5px 0 #C9E9D2, 0 6px 0 #C9E9D2, 0 7px 0 #C9E9D2,0 8px 0 #C9E9D2,0 9px 0 #C9E9D2,0 40px 20px rgba(0,0,0,0.3);
+            }
+        }
+    </style>
+  
+    <div class="rounded">
+        <dl>
+            <dt style="font-family: UTM Avo;"><b>Họ và tên:</b> Nguyễn Đỗ Đăng Hậu</dt>
+            <dt style="font-family: UTM Avo;"><b>Ngày sinh:</b> 01/09/2007</dt>
+            <dt style="font-family: UTM Avo;"><b>Món ăn yêu thích:</b> Cơm mẹ nấu</dt>
+            <dt style="font-family: UTM Avo;"><b>Email:</b>haunguyxn@gmail.com</dt>
+            <dt style="font-family: UTM Avo;"><b>Ca sĩ/Ban nhạc yêu thích:</b>
+                    <ul style="list-style-type: circle;">
+                            <li>Tùng</li>
+                            <li>Vũ.</li>
+                            <li>Thắng/Ngọt</li>
+                            <li>Hà Anh Tuấn</li>
+                            <li>Hoàng Dũng</li>
+                            <li>Chillies</li>
+                            <li>Cá hồi hoang</li>
+                    </dt></ul>
+            <dt style="font-family: UTM Avo;"><b>Sở thích:</b>
+                <ul style="list-style-type: circle;">
+                            <li>Chơi cờ tướng với các ông già trong xóm, Thanh Hưng và hành con gà Nhật Hiền.</li>
+                            <li>Đi ngắm cảnh và khám phá những nơi xa xôi.</li>
+                            <li>Đá bóng.</li> 
+            </dt></ul>
+            <dt style="font-family: UTM Avo;"><b>Những bộ anime yêu thích:</b>
+            <ul style="list-style-type: circle;">
+                                <li>Attack on Titan</li>
+                                <li>Your Lie in April.</li>
+                                <li>A Silent Voice</li>
+                                <li>I Want to Eat Your Pancreas</li>
+                                <li>ReLIFE</li>
+                </ul>
+            </dt>
+            <dt style="font-family: UTM Avo;"><b>Một vài người bạn của mình:</b>
+                <ul style="list-style-type: circle;">
+                    <li> Trần Quốc An:<a href="https://www.facebook.com/tran.q.an.18"><img src="E:\Presentation1\Slide1-removebg-preview.png" width="50" height="50"></a></li>
+                    <li> Phạm Hưng:<a href="https://www.facebook.com/profile.php?id=100033240204245"><img src="E:\Presentation1\Slide2-removebg-preview.png" width="50" height="50"></a></li>
+                    <li> Văn Thi:<a href="https://www.facebook.com/vanthi.0.21.12"><img src="E:\Presentation1\Slide3-removebg-preview.png" width="50" height="50"></a></li>
+            </dt>
+        </dl>
+    </div>
+    </div>
+    <p style="font-family: UTM Avo;font-size: 30px;"><strong>LIÊN KẾT CÁ NHÂN</strong></p>    
+    <div>
+    <a href="https://www.facebook.com/haunguyxn" class="image-link" target="_blank">
+    <img src="E:/facebook.png" alt="facebook">
+    </a>
+    <a href="https://www.instagram.com/haunguy3n/?hl=en" class="image-link" target="_blank">
+        <img src="E:/instagram.png" alt="instagram">
+    </a>
+    <a href="https://www.pinterest.com/haunguyen01092007/" class="image-link" target="_blank">
+        <img src="E:/pinterest.png" alt="pinterest">
+    </a>
+    <a href="https://www.behance.net/hung47/" class="image-link" target="_blank">
+        <img src="E:/behance.png" alt="behance">
+    </a>
+    <a href="https://github.com/danghau2007" class="image-link" target="_blank">
+        <img src="E:/github.png" alt="github">
+    </a>
+    </div>
+     <div class="rounded2">
+    <button class="btn" style="font-family: UTM Avo; font-size: 20px;"><strong>Một số bản nhạc yêu thích:</strong></button>
+    </div>
+
+        <script>
+        window.addEventListener("scroll", () => {
+            const image = document.getElementById("image");
+            const scrollY = window.scrollY;
+
+            if (scrollY > 0) {
+                // Giảm kích thước và di chuyển ảnh sang trái
+                image.style.transform = `scale(0.5)`;
+                image.style.position = "fixed";
+                image.style.left = "-350px";
+            } else {
+                // Reset lại kích thước và vị trí
+                image.style.transform = `scale(1)`;
+                image.style.left = "50%";
+            }
+        });
+    </script>
+    <script>
+        // Lấy phần tử navbar
+        const navbar = document.getElementById("navbar");
+
+        // Lắng nghe sự kiện cuộn trang
+        window.onscroll = function() {
+            // Kiểm tra vị trí cuộn của trang
+            if (window.pageYOffset > 50) { // Khi cuộn xuống 50px
+                navbar.classList.add("small");
+            } else {
+                navbar.classList.remove("small");
+            }
+        };
+    </script>
+</body>
+</html>
